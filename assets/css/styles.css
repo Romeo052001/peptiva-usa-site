@@ -316,3 +316,7 @@ p{color:var(--muted)}
 .agegate__card p{color:var(--muted);font-size:15.5px;margin-bottom:26px}
 .agegate__btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .agegate__btns .btn{min-width:150px;justify-content:center}
+
+.brand-logo{height:32px;width:auto;display:block}
+.footer .brand-logo{height:40px}
+@media(max-width:680px){.brand-logo{height:28px}}
