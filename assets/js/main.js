@@ -129,7 +129,7 @@ function productCard(p){
   +     (p.best ? '<span class="pcard__best">Best Seller</span>' : '') + '</div>'
   +   '<div class="pcard__body"><h3>' + p.name + '</h3>'
   +     '<p class="pcard__desc">' + p.desc + '</p>'
-  +     '<div class="pcard__foot"><span class="pcard__price">' + fmt(p.price) + '<span style="font-size:12px;color:var(--muted);font-weight:600"> /unit</span></span>'
+  +     '<div class="pcard__foot"><span class="pcard__price" style="font-size:15px;font-family:var(--font);font-weight:700;color:var(--crimson)">Request pricing</span>'
   +       '<span class="rx">Clinical / RUO</span></div>'
   +   '</div></a>';
 }
@@ -165,7 +165,7 @@ function initProduct(){
   function set(sel, val){ var e = document.querySelector(sel); if(e) e.textContent = val; }
   set("[data-cat]", p.tag);
   set("[data-name]", p.name);
-  set("[data-price]", fmt(p.price) + " /unit");
+  set("[data-price]", "Wholesale pricing on request");
   set("[data-desc]", p.desc);
   set("[data-research]", p.research);
   set("[data-contains]", p.contains);
