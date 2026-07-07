@@ -105,7 +105,7 @@ function buildFooter(){
   +     '<div><h4>Practices</h4><ul>'
   +       '<li><a href="contact.html">Wholesale Access</a></li>'
   +       '<li><a href="contact.html">Request Pricing</a></li>'
-  +       '<li><a href="mailto:partners@peptivausa.com">partners@peptivausa.com</a></li>'
+  +       '<li><a href="mailto:info@peptivausa.com">info@peptivausa.com</a></li>'
   +       '<li><a href="shipping-refunds.html">Shipping & Returns</a></li></ul></div>'
   +   '</div>'
   +   '<div class="footer__disc"><strong style="color:#B9C2D2">For licensed clinical practices and research use only:</strong> '
