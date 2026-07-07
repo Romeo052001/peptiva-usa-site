@@ -185,8 +185,8 @@ function initProduct(){
 function initFeatured(){
   var f = document.getElementById("featured-grid");
   if(f){
-    var ordered = PRODUCTS.filter(function(p){return p.best;}).concat(PRODUCTS.filter(function(p){return !p.best;}));
-    renderGrid(f, ordered.slice(0,6));
+    var featured = PRODUCTS.filter(function(p){return p.best;}).slice(0,3);
+    renderGrid(f, featured);
   }
   var c = document.getElementById("cat-grid");
   if(c){
@@ -218,7 +218,12 @@ function initForms(){
   });
   document.querySelectorAll("form[data-apply]").forEach(function(form){
     form.addEventListener("submit", function(e){ e.preventDefault();
-      form.innerHTML = '<div style="text-align:center;padding:24px"><div style="width:52px;height:52px;border-radius:999px;background:var(--crimson);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:24px">&#10003;</div><h3>Application received</h3><p style="margin-top:8px">Our team will follow up within one business day with pricing and next steps.</p></div>'; });
+      var btn = form.querySelector("button[type=submit], button:not([type])");
+      if(btn){ btn.disabled = true; btn.textContent = "Sending…"; }
+      var url = (form.getAttribute("action")||"").replace("formsubmit.co/","formsubmit.co/ajax/");
+      var done = function(){ form.innerHTML = '<div style="text-align:center;padding:24px"><div style="width:52px;height:52px;border-radius:999px;background:var(--crimson);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:24px">&#10003;</div><h3>Application received</h3><p style="margin-top:8px">Thank you — our team will follow up within one business day with pricing and next steps.</p></div>'; };
+      fetch(url, {method:"POST", body:new FormData(form), headers:{"Accept":"application/json"}}).then(done).catch(done);
+    });
   });
 }
 
