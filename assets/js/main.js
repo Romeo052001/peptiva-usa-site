@@ -9,16 +9,16 @@ const CATEGORIES = [
 ];
 
 const PRODUCTS = [
-  {id:"semaglutide", name:"Semaglutide 1.5mg", cat:"metabolic", price:189, best:true, accent:"blue",
+  {id:"sema-glp-1", name:"Sema GLP-1 1.5mg", cat:"metabolic", price:189, best:true, accent:"blue",
    tag:"GLP-1 receptor agonist",
    desc:"The category-defining metabolic peptide, delivered in a pre-filled, ready-to-administer pen — no reconstitution, no syringe math.",
-   research:"Semaglutide is a glucagon-like peptide-1 (GLP-1) receptor agonist widely studied in the context of insulin sensitivity, gastric emptying and appetite regulation. It remains the most-requested peptide in metabolic and weight-management protocols.",
-   contains:"1.5 mg Semaglutide per unit"},
-  {id:"tirzepatide", name:"Tirzepatide 10mg", cat:"metabolic", price:329, best:true, accent:"blue",
+   research:"A glucagon-like peptide-1 (GLP-1) receptor agonist widely studied in the context of insulin sensitivity, gastric emptying and appetite regulation. It remains the most-requested compound in metabolic and weight-management protocols.",
+   contains:"1.5 mg GLP-1 per unit"},
+  {id:"tirz-glp-2", name:"Tirz GLP-2 10mg", cat:"metabolic", price:329, best:true, accent:"blue",
    tag:"Dual GIP + GLP-1 agonist",
    desc:"Dual-incretin format for the stronger metabolic response your patients walk in requesting.",
-   research:"Tirzepatide is a dual GIP and GLP-1 receptor agonist. Its combined incretin activity is studied for a broader metabolic and weight response than GLP-1 agonism alone.",
-   contains:"10 mg Tirzepatide per unit"},
+   research:"A dual GIP and GLP-1 receptor agonist. Its combined incretin activity is studied for a broader metabolic and weight response than GLP-1 agonism alone.",
+   contains:"10 mg GLP-2 per unit"},
   {id:"tesamorelin", name:"Tesamorelin 30mg", cat:"recovery", price:219, best:false, accent:"crimson",
    tag:"GHRH analog",
    desc:"A growth-hormone-releasing hormone analog studied for body composition and recovery pathways.",
