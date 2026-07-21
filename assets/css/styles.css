@@ -94,6 +94,7 @@ p{color:var(--muted)}
 .drop .has-sub .caret{font-style:normal;font-size:20px;line-height:1;color:var(--muted)}
 .drop .has-sub:hover .caret{color:var(--crimson)}
 .drop .sub{position:absolute;top:-13px;left:calc(100% + 10px);min-width:270px;opacity:0;visibility:hidden;transform:translateX(8px);transition:.18s;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px;box-shadow:var(--shadow)}
+.has-drop:hover .drop .sub{opacity:0;visibility:hidden;transform:translateX(8px)}
 .drop .has-sub:hover .sub{opacity:1;visibility:visible;transform:none}
 
 /* Hero */
