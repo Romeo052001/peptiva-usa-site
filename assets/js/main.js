@@ -69,6 +69,7 @@ function buildHeader(){
   +   '<ul class="nav__links">'
   +     '<li class="has-drop"><a href="shop.html">Products</a><div class="drop">' + dropItems
   +       '<div class="drop__all"><a href="shop.html">All products &rarr;</a></div></div></li>'
+  +     '<li><a href="refillable.html">Refillable Pens</a></li>'
   +     '<li><a href="how-it-works.html">Lab Testing</a></li>'
   +     '<li><a href="about.html">About</a></li>'
   +     '<li><a href="faq.html">FAQ</a></li>'
@@ -262,9 +263,34 @@ function initGate(){
   });
 }
 
+const REFILLABLE = [
+  {id:"sema-glp-1", name:"Sema GLP-1", accent:"blue", tag:"GLP-1 receptor agonist"},
+  {id:"tirz-glp-2", name:"Tirz GLP-2", accent:"blue", tag:"Dual GIP + GLP-1 agonist"},
+  {id:"reta-glp-3", name:"Reta GLP-3", accent:"crimson", tag:"Triple GIP/GLP-1/glucagon agonist"},
+  {id:"tesamorelin", name:"Tesamorelin", accent:"crimson", tag:"GHRH analog"},
+  {id:"mots-c", name:"MOTS-C", accent:"crimson", tag:"Mitochondrial-derived peptide"},
+  {id:"glow", name:"GLOW", accent:"crimson", tag:"GHK-Cu + BPC-157 + TB-500"},
+  {id:"wolverine", name:"Wolverine", accent:"crimson", tag:"BPC-157 + TB-500"}
+];
+function initRefill(){
+  var g = document.getElementById("refill-grid");
+  if(!g) return;
+  g.innerHTML = REFILLABLE.map(function(p){
+    return '<div class="card pcard reveal">'
+      + '<div class="pcard__media" style="background:radial-gradient(circle at 50% 34%,#FFFFFF,#EEF3F9)">'
+      +   '<img src="assets/img/refillable/' + p.id + '.png" alt="' + p.name + ' refillable pen" loading="lazy">'
+      +   '<span class="pcard__tag">Refillable</span></div>'
+      + '<div class="pcard__body"><h3>' + p.name + '</h3>'
+      +   '<p class="pcard__desc">' + p.tag + ' — reusable multi-dose device.</p>'
+      +   '<div class="pcard__foot"><span class="pcard__price" style="font-size:15px;font-family:var(--font);font-weight:700;color:var(--crimson)">Request pricing</span>'
+      +   '<span class="rx">Clinical / RUO</span></div></div></div>';
+  }).join("");
+  revealInit();
+}
+
 document.addEventListener("DOMContentLoaded", function(){
   initGate();
   var h = document.getElementById("site-header"); if(h) h.innerHTML = buildHeader();
   var f = document.getElementById("site-footer"); if(f) f.innerHTML = buildFooter();
-  initFeatured(); initShop(); initProduct(); initAccordion(); initForms(); revealInit();
+  initFeatured(); initShop(); initProduct(); initRefill(); initAccordion(); initForms(); revealInit();
 });
