@@ -41,7 +41,7 @@ section{position:relative}
 .muted{color:var(--muted)}
 
 /* Typography */
-h1,h2,h3,h4{font-family:var(--display);font-weight:800;line-height:1.05;letter-spacing:-.02em;color:var(--ink)}
+h1,h2,h3,h4{font-family:var(--display);font-weight:800;line-height:1.04;letter-spacing:-.01em;color:var(--ink);text-transform:uppercase}
 .display{font-size:clamp(42px,7vw,84px);letter-spacing:-.03em}
 h1{font-size:clamp(34px,5.4vw,60px)}
 h2{font-size:clamp(28px,4vw,46px)}
@@ -316,6 +316,23 @@ p{color:var(--muted)}
   .grid-4,.steps{grid-template-columns:1fr}
   .cta-block{padding:48px 20px}
 }
+
+/* Pen device page */
+.penhero{position:relative;min-height:82vh;display:flex;align-items:center;overflow:hidden;background:var(--ink)}
+.penhero__bg{position:absolute;inset:0}
+.penhero__bg img{width:100%;height:100%;object-fit:cover;opacity:.8}
+.penhero__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,12,22,.94),rgba(8,12,22,.55) 55%,rgba(8,12,22,.2))}
+.penhero__inner{position:relative;z-index:2;max-width:720px;padding:90px 0;color:#fff}
+.penhero h1{color:#fff;margin:18px 0 20px}
+.penhero .lead{color:#D7DEEA;margin-bottom:32px}
+.penshow{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);aspect-ratio:4/5;background:radial-gradient(circle at 50% 30%,#FFFFFF,#EAF0F7);display:flex;align-items:center;justify-content:center;padding:40px}
+.penshow img{max-height:100%;width:auto;object-fit:contain;filter:drop-shadow(0 24px 40px rgba(11,18,32,.28))}
+.spectable{border-top:2px solid var(--ink)}
+.spectable .row{display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding:18px 2px;border-bottom:1px solid var(--line)}
+.spectable .k{color:var(--muted);font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em}
+.spectable .v{color:var(--ink);font-size:16px;font-weight:700;text-align:right}
+.spec2{display:grid;grid-template-columns:1fr 1fr;gap:0 56px}
+@media(max-width:760px){.spec2{grid-template-columns:1fr;gap:0}}
 
 /* Professional access gate */
 .agegate{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;background:rgba(8,12,22,.6);backdrop-filter:blur(8px);padding:24px}

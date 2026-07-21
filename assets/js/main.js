@@ -70,6 +70,7 @@ function buildHeader(){
   + '<header class="site-header" id="hdr"><div class="container nav">'
   +   '<a class="nav__logo" href="index.html" aria-label="Peptiva USA home">' + LOGO_SVG + '</a>'
   +   '<ul class="nav__links">'
+  +     '<li><a href="pen.html">The Pen</a></li>'
   +     '<li class="has-drop"><a href="shop.html">Products</a><div class="drop">'
   +       '<div class="has-sub"><a href="shop.html"><span class="ds"><strong>Pens</strong><span>Pre-filled, ready-to-administer</span></span><i class="caret">&rsaquo;</i></a><div class="drop sub">' + pensSub + '</div></div>'
   +       '<div class="has-sub"><a href="refillable.html"><span class="ds"><strong>Refillable Pens</strong><span>Reusable multi-dose devices</span></span><i class="caret">&rsaquo;</i></a><div class="drop sub">' + refillSub + '</div></div>'
