@@ -60,16 +60,20 @@ const ICON = {
 };
 
 function buildHeader(){
-  var dropItems = CATEGORIES.map(function(c){
+  var pensSub = CATEGORIES.map(function(c){
     return '<a href="shop.html?cat=' + c.slug + '"><strong>' + c.name + '</strong><span>' + c.desc + '</span></a>';
-  }).join("");
+  }).join("") + '<div class="drop__all"><a href="shop.html">All pens &rarr;</a></div>';
+  var refillSub = CATEGORIES.map(function(c){
+    return '<a href="refillable.html?cat=' + c.slug + '"><strong>' + c.name + '</strong><span>' + c.desc + '</span></a>';
+  }).join("") + '<div class="drop__all"><a href="refillable.html">All refillable &rarr;</a></div>';
   return ''
   + '<header class="site-header" id="hdr"><div class="container nav">'
   +   '<a class="nav__logo" href="index.html" aria-label="Peptiva USA home">' + LOGO_SVG + '</a>'
   +   '<ul class="nav__links">'
-  +     '<li class="has-drop"><a href="shop.html">Products</a><div class="drop">' + dropItems
-  +       '<div class="drop__all"><a href="shop.html">All products &rarr;</a></div></div></li>'
-  +     '<li><a href="refillable.html">Refillable Pens</a></li>'
+  +     '<li class="has-drop"><a href="shop.html">Products</a><div class="drop">'
+  +       '<div class="has-sub"><a href="shop.html"><span class="ds"><strong>Pens</strong><span>Pre-filled, ready-to-administer</span></span><i class="caret">&rsaquo;</i></a><div class="drop sub">' + pensSub + '</div></div>'
+  +       '<div class="has-sub"><a href="refillable.html"><span class="ds"><strong>Refillable Pens</strong><span>Reusable multi-dose devices</span></span><i class="caret">&rsaquo;</i></a><div class="drop sub">' + refillSub + '</div></div>'
+  +     '</div></li>'
   +     '<li><a href="how-it-works.html">Lab Testing</a></li>'
   +     '<li><a href="about.html">About</a></li>'
   +     '<li><a href="faq.html">FAQ</a></li>'
@@ -264,33 +268,70 @@ function initGate(){
 }
 
 const REFILLABLE = [
-  {id:"sema-glp-1", name:"Sema GLP-1", accent:"blue", tag:"GLP-1 receptor agonist"},
-  {id:"tirz-glp-2", name:"Tirz GLP-2", accent:"blue", tag:"Dual GIP + GLP-1 agonist"},
-  {id:"reta-glp-3", name:"Reta GLP-3", accent:"crimson", tag:"Triple GIP/GLP-1/glucagon agonist"},
-  {id:"tesamorelin", name:"Tesamorelin", accent:"crimson", tag:"GHRH analog"},
-  {id:"mots-c", name:"MOTS-C", accent:"crimson", tag:"Mitochondrial-derived peptide"},
-  {id:"glow", name:"GLOW", accent:"crimson", tag:"GHK-Cu + BPC-157 + TB-500"},
-  {id:"wolverine", name:"Wolverine", accent:"crimson", tag:"BPC-157 + TB-500"}
+  {id:"sema-glp-1", name:"Sema GLP-1", cat:"metabolic", accent:"blue", tag:"GLP-1 receptor agonist"},
+  {id:"tirz-glp-2", name:"Tirz GLP-2", cat:"metabolic", accent:"blue", tag:"Dual GIP + GLP-1 agonist"},
+  {id:"reta-glp-3", name:"Reta GLP-3", cat:"metabolic", accent:"crimson", tag:"Triple GIP/GLP-1/glucagon agonist"},
+  {id:"tesamorelin", name:"Tesamorelin", cat:"recovery", accent:"crimson", tag:"GHRH analog"},
+  {id:"mots-c", name:"MOTS-C", cat:"longevity", accent:"crimson", tag:"Mitochondrial-derived peptide"},
+  {id:"glow", name:"GLOW", cat:"aesthetic", accent:"crimson", tag:"GHK-Cu + BPC-157 + TB-500"},
+  {id:"wolverine", name:"Wolverine", cat:"recovery", accent:"crimson", tag:"BPC-157 + TB-500"}
 ];
+function setTxt(sel, val){ var e = document.querySelector(sel); if(e) e.textContent = val; }
+function refillImg(p){ return "assets/img/refillable/" + p.id + ".png"; }
+function refillCard(p){
+  return '<a class="card pcard reveal" href="refill-product.html?id=' + p.id + '">'
+    + '<div class="pcard__media" style="background:radial-gradient(circle at 50% 34%,#FFFFFF,#EEF3F9)">'
+    +   '<img src="' + refillImg(p) + '" alt="' + p.name + ' refillable pen" loading="lazy">'
+    +   '<span class="pcard__tag">Refillable</span></div>'
+    + '<div class="pcard__body"><h3>' + p.name + '</h3>'
+    +   '<p class="pcard__desc">' + p.tag + ' — reusable multi-dose device.</p>'
+    +   '<div class="pcard__foot"><span class="pcard__price" style="font-size:15px;font-family:var(--font);font-weight:700;color:var(--crimson)">Request pricing</span>'
+    +   '<span class="rx">Clinical / RUO</span></div></div></a>';
+}
 function initRefill(){
   var g = document.getElementById("refill-grid");
   if(!g) return;
-  g.innerHTML = REFILLABLE.map(function(p){
-    return '<div class="card pcard reveal">'
-      + '<div class="pcard__media" style="background:radial-gradient(circle at 50% 34%,#FFFFFF,#EEF3F9)">'
-      +   '<img src="assets/img/refillable/' + p.id + '.png" alt="' + p.name + ' refillable pen" loading="lazy">'
-      +   '<span class="pcard__tag">Refillable</span></div>'
-      + '<div class="pcard__body"><h3>' + p.name + '</h3>'
-      +   '<p class="pcard__desc">' + p.tag + ' — reusable multi-dose device.</p>'
-      +   '<div class="pcard__foot"><span class="pcard__price" style="font-size:15px;font-family:var(--font);font-weight:700;color:var(--crimson)">Request pricing</span>'
-      +   '<span class="rx">Clinical / RUO</span></div></div></div>';
-  }).join("");
-  revealInit();
+  var active = new URLSearchParams(location.search).get("cat") || "all";
+  var countEl = document.getElementById("refill-count");
+  function draw(){
+    var list = active === "all" ? REFILLABLE : REFILLABLE.filter(function(p){return p.cat===active;});
+    g.innerHTML = list.map(refillCard).join("");
+    if(countEl) countEl.textContent = list.length + " products";
+    document.querySelectorAll("#refill-filters .filter-btn").forEach(function(b){ b.classList.toggle("active", b.dataset.cat===active); });
+    revealInit();
+  }
+  document.querySelectorAll("#refill-filters .filter-btn").forEach(function(b){
+    b.addEventListener("click", function(){
+      active = b.dataset.cat; draw();
+      history.replaceState(null, "", active==="all" ? "refillable.html" : "refillable.html?cat=" + active);
+    });
+  });
+  draw();
+}
+function initRefillProduct(){
+  var wrap = document.getElementById("refill-pdp");
+  if(!wrap) return;
+  var id = new URLSearchParams(location.search).get("id") || REFILLABLE[0].id;
+  var r = REFILLABLE.find(function(x){return x.id===id;}) || REFILLABLE[0];
+  var p = PRODUCTS.find(function(x){return x.id===id;}) || {};
+  document.title = r.name + " Refillable Pen — Peptiva USA";
+  setTxt("[data-cat]", r.tag);
+  setTxt("[data-name]", r.name + " · Refillable Pen");
+  setTxt("[data-desc]", p.desc || (r.tag + " in a durable, reusable pen device."));
+  setTxt("[data-research]", p.research || "");
+  setTxt("[data-contains]", "Reusable multi-dose injector device — cartridge-compatible across the Peptiva range.");
+  setTxt("[data-crumb]", r.name);
+  document.querySelectorAll("[data-img]").forEach(function(i){ i.src = refillImg(r); });
+  var rel = document.getElementById("refill-related");
+  if(rel){
+    var others = REFILLABLE.filter(function(x){return x.id!==r.id;}).slice(0,3);
+    rel.innerHTML = others.map(refillCard).join(""); revealInit();
+  }
 }
 
 document.addEventListener("DOMContentLoaded", function(){
   initGate();
   var h = document.getElementById("site-header"); if(h) h.innerHTML = buildHeader();
   var f = document.getElementById("site-footer"); if(f) f.innerHTML = buildFooter();
-  initFeatured(); initShop(); initProduct(); initRefill(); initAccordion(); initForms(); revealInit();
+  initFeatured(); initShop(); initProduct(); initRefill(); initRefillProduct(); initAccordion(); initForms(); revealInit();
 });

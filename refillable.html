@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css">
 <title>Refillable Pens — Peptiva USA</title>
-<meta name="description" content="Reusable, medical-grade refillable peptide pens for licensed clinical practices — durable injector devices paired with per-protocol cartridges. For clinical and research use only.">
+<meta name="description" content="Reusable, medical-grade refillable peptide pens for licensed clinical practices — durable injector devices reloaded per protocol. For clinical and research use only.">
 </head>
 <body>
 <div id="site-header"></div>
@@ -35,11 +35,26 @@
 </section>
 
 <section class="section">
-  <div class="container">
-    <div class="sec-head"><span class="eyebrow">The range</span><h2>Refillable pens by protocol</h2>
-      <p class="lead">Every Peptiva compound is available in the reusable pen format. Wholesale pricing shared after verification of practice credentials.</p></div>
-    <div class="grid grid-3" id="refill-grid"></div>
-    <div class="center" style="margin-top:46px"><a class="btn btn--primary btn--lg" href="contact.html">Request Wholesale Access</a></div>
+  <div class="container shop-layout">
+    <aside class="filters" id="refill-filters">
+      <h4>Category</h4>
+      <div class="filter-group">
+        <button class="filter-btn active" data-cat="all">All refillable</button>
+        <button class="filter-btn" data-cat="metabolic">Metabolic &amp; Weight</button>
+        <button class="filter-btn" data-cat="recovery">Recovery &amp; Repair</button>
+        <button class="filter-btn" data-cat="longevity">Longevity &amp; Cellular</button>
+        <button class="filter-btn" data-cat="aesthetic">Aesthetic &amp; Skin</button>
+      </div>
+      <div style="margin-top:24px;border-top:1px solid var(--line);padding-top:20px">
+        <h4>Need help?</h4>
+        <p style="font-size:13.5px;color:var(--muted);margin-bottom:14px">Request wholesale pricing and sample availability.</p>
+        <a class="btn btn--primary btn--sm btn--block" href="contact.html">Request Access</a>
+      </div>
+    </aside>
+    <div>
+      <div class="shop-bar"><span class="count" id="refill-count"></span></div>
+      <div class="grid grid-3" id="refill-grid"></div>
+    </div>
   </div>
 </section>
 
