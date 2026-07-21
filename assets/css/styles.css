@@ -326,6 +326,15 @@ p{color:var(--muted)}
 .agegate__card p{color:var(--muted);font-size:15.5px;margin-bottom:26px}
 .agegate__btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .agegate__btns .btn{min-width:150px;justify-content:center}
+.agegate__card--verify{text-align:left;max-width:490px}
+.agegate__card--verify .agegate__logo{justify-content:center}
+.agegate__card--verify h2{text-align:left}
+.gate-check{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:12px;cursor:pointer;font-size:14px;color:var(--ink-2);line-height:1.5}
+.gate-check input{margin-top:1px;width:20px;height:20px;flex:none;accent-color:var(--crimson);cursor:pointer}
+.gate-check b{color:var(--crimson);font-weight:700}
+#gate-enter{margin-top:8px}
+#gate-enter:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none;background:var(--crimson)}
+.gate-fine{font-size:11.5px;color:var(--muted);margin-top:16px;margin-bottom:0;line-height:1.6}
 
 .brand-logo{height:32px;width:auto;display:block}
 .footer .brand-logo{height:40px}

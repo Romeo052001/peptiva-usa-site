@@ -250,20 +250,23 @@ function initGate(){
   try { if (localStorage.getItem("peptiva_verified") === "yes") return; } catch(e){}
   var o = document.createElement("div");
   o.className = "agegate";
-  o.innerHTML = '<div class="agegate__card"><div class="agegate__logo">' + LOGO_SVG + '</div>'
-    + '<h2>Professional Access</h2>'
-    + '<p>Peptiva USA supplies licensed clinical practices and qualified researchers only. Are you a licensed or qualified professional?</p>'
-    + '<div class="agegate__btns"><button class="btn btn--primary btn--lg" id="ag-yes">Yes, continue</button>'
-    + '<button class="btn btn--ghost btn--lg" id="ag-no">No</button></div></div>';
+  o.innerHTML = '<div class="agegate__card agegate__card--verify"><div class="agegate__logo">' + LOGO_SVG + '</div>'
+    + '<h2>Researcher &amp; clinical verification</h2>'
+    + '<p>Peptiva USA supplies peptides exclusively to licensed clinical practices and qualified researchers for clinical and in-vitro laboratory use. Please confirm before continuing.</p>'
+    + '<label class="gate-check"><input type="checkbox" id="gc1"><span>I am at least <b>21 years of age</b>.</span></label>'
+    + '<label class="gate-check"><input type="checkbox" id="gc2"><span>I confirm I am a <b>licensed clinician or qualified researcher</b> acquiring these products for <b>clinical or research use only</b> — not for personal or unsupervised human use.</span></label>'
+    + '<button class="btn btn--primary btn--lg btn--block" id="gate-enter" disabled>Enter Peptiva &rarr;</button>'
+    + '<p class="gate-fine">By proceeding you affirm the statements above are true. Products are intended for licensed clinical practices and research use only, are not for unsupervised human use, and have not been evaluated by the U.S. Food and Drug Administration.</p>'
+    + '</div>';
   document.body.appendChild(o);
   document.documentElement.style.overflow = "hidden";
-  document.getElementById("ag-yes").addEventListener("click", function(){
+  var c1 = document.getElementById("gc1"), c2 = document.getElementById("gc2"), btn = document.getElementById("gate-enter");
+  function upd(){ btn.disabled = !(c1.checked && c2.checked); }
+  c1.addEventListener("change", upd); c2.addEventListener("change", upd);
+  btn.addEventListener("click", function(){
+    if(btn.disabled) return;
     try { localStorage.setItem("peptiva_verified", "yes"); } catch(e){}
     o.remove(); document.documentElement.style.overflow = "";
-  });
-  document.getElementById("ag-no").addEventListener("click", function(){
-    o.querySelector(".agegate__card").innerHTML = '<div class="agegate__logo">' + LOGO_SVG + '</div>'
-      + '<h2>Access Restricted</h2><p>This site is intended for licensed clinical practices and qualified researchers only.</p>';
   });
 }
 
