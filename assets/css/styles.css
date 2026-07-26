@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap');
 /* ===========================================================
    Peptiva USA — Design System
    Clinical · crimson + blue on light, dramatic dark sections
@@ -96,6 +97,15 @@ p{color:var(--muted)}
 .drop .sub{position:absolute;top:-13px;left:calc(100% + 10px);min-width:270px;opacity:0;visibility:hidden;transform:translateX(8px);transition:.18s;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px;box-shadow:var(--shadow)}
 .has-drop:hover .drop .sub{opacity:0;visibility:hidden;transform:translateX(8px)}
 .drop .has-sub:hover .sub{opacity:1;visibility:visible;transform:none}
+
+/* Wordmark logo */
+.wm{display:inline-flex;align-items:baseline;gap:.3em;font-family:'Poppins',var(--font);white-space:nowrap}
+.wm__name{font-weight:600;font-size:25px;letter-spacing:-.01em;color:#152a6b;line-height:1}
+.wm__usa{font-weight:700;font-size:12px;letter-spacing:.03em;color:var(--crimson);line-height:1}
+.wm--light .wm__name{color:#fff}
+.footer .wm__name{color:#fff;font-size:27px}
+.footer .wm__usa{font-size:13px}
+@media(max-width:680px){.wm__name{font-size:22px}.wm__usa{font-size:11px}}
 
 /* Hero */
 .hero{position:relative;min-height:90vh;display:flex;align-items:center;overflow:hidden;background:var(--ink)}

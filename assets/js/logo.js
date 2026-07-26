@@ -1,4 +1,4 @@
-/* Peptiva USA — brand logos (header: dark on light, footer: light on dark) */
-var LOGO_HEADER = '<img src="assets/logo/logo-header.png" alt="Peptiva USA" class="brand-logo">';
-var LOGO_FOOTER = '<img src="assets/logo/logo-footer.png" alt="Peptiva USA" class="brand-logo brand-logo--footer">';
+/* Peptiva USA — wordmark logo (text-based: crisp, transparent, scalable) */
+var LOGO_HEADER = '<span class="wm"><span class="wm__name">Peptiva</span><span class="wm__usa">USA.</span></span>';
+var LOGO_FOOTER = '<span class="wm wm--light"><span class="wm__name">Peptiva</span><span class="wm__usa">USA.</span></span>';
 var LOGO_SVG = LOGO_HEADER;
