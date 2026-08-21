@@ -135,8 +135,8 @@ function productCard(p){
   +     (p.best ? '<span class="pcard__best">Best Seller</span>' : '') + '</div>'
   +   '<div class="pcard__body"><h3>' + p.name + '</h3>'
   +     '<p class="pcard__desc">' + p.desc + '</p>'
-  +     '<div class="pcard__foot"><span class="pcard__price" style="font-size:15px;font-family:var(--font);font-weight:700;color:var(--crimson)">Request pricing</span>'
-  +       '<span class="rx">Clinical / RUO</span></div>'
+  +     '<div class="pcard__foot"><span class="pcard__price">Wholesale &mdash; price on request</span>'
+  +       '<span class="pcard__cta">Request Pricing</span></div>'
   +   '</div></a>';
 }
 function renderGrid(el, list){ el.innerHTML = list.map(productCard).join(""); revealInit(); }
@@ -283,8 +283,8 @@ function refillCard(p){
     +   '<span class="pcard__tag">Refillable</span></div>'
     + '<div class="pcard__body"><h3>' + p.name + '</h3>'
     +   '<p class="pcard__desc">' + p.tag + ' — reusable multi-dose device.</p>'
-    +   '<div class="pcard__foot"><span class="pcard__price" style="font-size:15px;font-family:var(--font);font-weight:700;color:var(--crimson)">Request pricing</span>'
-    +   '<span class="rx">Clinical / RUO</span></div></div></a>';
+    +   '<div class="pcard__foot"><span class="pcard__price">Wholesale &mdash; price on request</span>'
+    +   '<span class="pcard__cta">Request Pricing</span></div></div></a>';
 }
 function initRefill(){
   var g = document.getElementById("refill-grid");
