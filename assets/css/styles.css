@@ -417,3 +417,6 @@ img{filter:grayscale(1)}
 
 /* ===== Brand poster image in full colour ===== */
 img[src*="brand.jpg"]{filter:none !important}
+
+/* ===== About page lab pen image in full colour ===== */
+img[src*="about-science.jpg"]{filter:none !important}
