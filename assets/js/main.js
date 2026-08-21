@@ -114,8 +114,8 @@ function buildFooter(){
   +       '<li><a href="mailto:info@peptivausa.com">info@peptivausa.com</a></li>'
   +       '<li><a href="shipping-refunds.html">Shipping & Returns</a></li></ul></div>'
   +   '</div>'
-  +   '<div class="footer__disc"><strong style="color:#B9C2D2">For licensed clinical practices and research use only:</strong> '
-  +     disclaimer + ' See our <a href="research-use.html" style="color:#E11D38">Research Use Disclaimer</a>.</div>'
+  +   '<div class="footer__disc"><strong style="color:#BDBDBD">For licensed clinical practices and research use only:</strong> '
+  +     disclaimer + ' See our <a href="research-use.html" style="color:#FFFFFF;text-decoration:underline">Research Use Disclaimer</a>.</div>'
   +   '<div class="footer__bottom">'
   +     '<div class="footer__legal">'
   +       '<a href="terms.html">Terms of Service</a>'
@@ -278,7 +278,7 @@ function setTxt(sel, val){ var e = document.querySelector(sel); if(e) e.textCont
 function refillImg(p){ return "assets/img/refillable/" + p.id + ".png"; }
 function refillCard(p){
   return '<a class="card pcard reveal" href="refill-product.html?id=' + p.id + '">'
-    + '<div class="pcard__media" style="background:radial-gradient(circle at 50% 34%,#FFFFFF,#EEF3F9)">'
+    + '<div class="pcard__media" style="background:radial-gradient(circle at 50% 34%,#FFFFFF,#F0F0EF)">'
     +   '<img src="' + refillImg(p) + '" alt="' + p.name + ' refillable pen" loading="lazy">'
     +   '<span class="pcard__tag">Refillable</span></div>'
     + '<div class="pcard__body"><h3>' + p.name + '</h3>'
