@@ -64,6 +64,9 @@ p{color:var(--muted)}
 .btn--block{width:100%;justify-content:center}
 .btn--lg{padding:18px 38px;font-size:16px}
 .btn--sm{padding:11px 22px;font-size:13.5px}
+/* Inverted primary button on dark sections (monochrome contrast) */
+.hero .btn--primary,.cta-block .btn--primary,.mesh-dark .btn--primary,.band .btn--primary{background:#fff;color:var(--ink);box-shadow:0 18px 40px -16px rgba(0,0,0,.55)}
+.hero .btn--primary:hover,.cta-block .btn--primary:hover,.mesh-dark .btn--primary:hover,.band .btn--primary:hover{background:#E6E6E5;color:var(--ink)}
 .on-dark .btn--ghost{color:#fff;border-color:var(--line-d)}
 .on-dark .btn--ghost:hover{border-color:#fff;color:#fff}
 
@@ -97,14 +100,6 @@ p{color:var(--muted)}
 .drop .sub{position:absolute;top:-13px;left:calc(100% + 10px);min-width:270px;opacity:0;visibility:hidden;transform:translateX(8px);transition:.18s;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px;box-shadow:var(--shadow)}
 .has-drop:hover .drop .sub{opacity:0;visibility:hidden;transform:translateX(8px)}
 .drop .has-sub:hover .sub{opacity:1;visibility:visible;transform:none}
-
-/* Monochrome imagery */
-.hero__bg img,.penhero__bg img,.phero__bg img,.split__media img,.cat-tile img,
-.cta-block img,.pcard__media img,.pdp__media img,.pdp__thumbs img,.penshow img{filter:grayscale(1)}
-.pcard__media img{filter:grayscale(1) drop-shadow(0 18px 26px rgba(10,10,10,.16))}
-.pdp__media img{filter:grayscale(1) drop-shadow(0 20px 30px rgba(10,10,10,.18))}
-.penshow img{filter:grayscale(1) drop-shadow(0 24px 40px rgba(10,10,10,.28))}
-.penshow--cover img{filter:grayscale(1)}
 
 /* Wordmark logo */
 .wm{display:inline-flex;align-items:baseline;gap:.3em;font-family:'Poppins',var(--font);white-space:nowrap}
@@ -377,3 +372,12 @@ p{color:var(--muted)}
 .brand-logo{height:32px;width:auto;display:block}
 .footer .brand-logo{height:40px}
 @media(max-width:680px){.brand-logo{height:28px}}
+
+/* ===== Monochrome imagery (must stay last to win specificity) ===== */
+.hero__bg img,.penhero__bg img,.phero__bg img,.split__media img,.cat-tile img,
+.cta-block img,.pdp__thumbs img,.penshow--cover img,.newsletter img{filter:grayscale(1) !important}
+.pcard__media img{filter:grayscale(1) drop-shadow(0 18px 26px rgba(10,10,10,.16)) !important}
+.pdp__media img{filter:grayscale(1) drop-shadow(0 20px 30px rgba(10,10,10,.18)) !important}
+.penshow img{filter:grayscale(1) drop-shadow(0 24px 40px rgba(10,10,10,.28)) !important}
+img{filter:grayscale(1)}
+.wm,.wm *{filter:none}
