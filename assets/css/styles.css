@@ -406,3 +406,6 @@ img{filter:grayscale(1)}
 .pdp__media img{max-height:none !important;width:100% !important;height:100% !important;object-fit:cover !important}
 .pdp__thumbs div{border-radius:0;padding:0;background:#0A0A0A}
 .pdp__thumbs img{width:100%;height:100%;object-fit:cover;padding:0}
+
+/* ===== Product images in full colour (overrides site-wide grayscale) ===== */
+.pcard__media img,.pdp__media img,.pdp__thumbs img,.penshow img,.penshow--cover img{filter:none !important}
