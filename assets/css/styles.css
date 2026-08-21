@@ -409,3 +409,8 @@ img{filter:grayscale(1)}
 
 /* ===== Product images in full colour (overrides site-wide grayscale) ===== */
 .pcard__media img,.pdp__media img,.pdp__thumbs img,.penshow img,.penshow--cover img{filter:none !important}
+
+/* ===== Category tiles: full colour + fix desc/CTA running together ===== */
+.cat-tile img{filter:none !important}
+.cat-tile__c span{display:block}
+.cat-tile__c .tile-cta{display:inline-flex;margin-top:14px}
