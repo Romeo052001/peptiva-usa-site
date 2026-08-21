@@ -414,3 +414,6 @@ img{filter:grayscale(1)}
 .cat-tile img{filter:none !important}
 .cat-tile__c span{display:block}
 .cat-tile__c .tile-cta{display:inline-flex;margin-top:14px}
+
+/* ===== Brand poster image in full colour ===== */
+img[src*="brand.jpg"]{filter:none !important}
