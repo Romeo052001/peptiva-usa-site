@@ -420,3 +420,11 @@ img[src*="brand.jpg"]{filter:none !important}
 
 /* ===== About page lab pen image in full colour ===== */
 img[src*="about-science.jpg"]{filter:none !important}
+
+/* ===== Card with price + Buy Now (separate links) ===== */
+.pcard__link{display:block;color:inherit}
+.pcard__body{padding:16px 0 12px !important}
+.pcard__price{display:block;font-family:var(--font);font-weight:700;font-size:16px;color:var(--ink) !important;margin:4px 0 0 !important}
+.pcard__cta{display:block;width:100%;text-align:center;border:1px solid var(--ink);padding:12px 10px;
+  font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);transition:.18s}
+.pcard__cta:hover{background:var(--ink);color:#fff}

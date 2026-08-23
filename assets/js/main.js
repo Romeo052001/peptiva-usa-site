@@ -9,32 +9,32 @@ const CATEGORIES = [
 ];
 
 const PRODUCTS = [
-  {id:"sema-glp-1", name:"Sema GLP-1 1.5mg", cat:"metabolic", price:189, best:true, accent:"blue",
+  {id:"sema-glp-1", name:"Sema GLP-1 1.5mg", cat:"metabolic", price:349, best:true, accent:"blue",
    tag:"GLP-1 receptor agonist",
    desc:"The category-defining metabolic peptide, delivered in a pre-filled, ready-to-administer pen — no reconstitution, no syringe math.",
    research:"A glucagon-like peptide-1 (GLP-1) receptor agonist widely studied in the context of insulin sensitivity, gastric emptying and appetite regulation. It remains the most-requested compound in metabolic and weight-management protocols.",
    contains:"1.5 mg GLP-1 per unit"},
-  {id:"tirz-glp-2", name:"Tirz GLP-2 10mg", cat:"metabolic", price:329, best:true, accent:"blue",
+  {id:"tirz-glp-2", name:"Tirz GLP-2 10mg", cat:"metabolic", price:399, best:true, accent:"blue",
    tag:"Dual GIP + GLP-1 agonist",
    desc:"Dual-incretin format for the stronger metabolic response your patients walk in requesting.",
    research:"A dual GIP and GLP-1 receptor agonist. Its combined incretin activity is studied for a broader metabolic and weight response than GLP-1 agonism alone.",
    contains:"10 mg GLP-2 per unit"},
-  {id:"tesamorelin", name:"Tesamorelin 30mg", cat:"recovery", price:219, best:false, accent:"crimson",
+  {id:"tesamorelin", name:"Tesamorelin 30mg", cat:"recovery", price:299, best:false, accent:"crimson",
    tag:"GHRH analog",
    desc:"A growth-hormone-releasing hormone analog studied for body composition and recovery pathways.",
    research:"Tesamorelin is a synthetic analog of growth-hormone-releasing hormone (GHRH), studied for its role in stimulating endogenous growth hormone secretion and its effects on body composition.",
    contains:"30 mg Tesamorelin per unit"},
-  {id:"mots-c", name:"MOTS-C 20mg", cat:"longevity", price:179, best:true, accent:"crimson",
+  {id:"mots-c", name:"MOTS-C 20mg", cat:"longevity", price:349, best:true, accent:"crimson",
    tag:"Mitochondrial-derived peptide",
    desc:"A mitochondrial-derived peptide studied for metabolic regulation, energy and endurance.",
    research:"MOTS-C is a mitochondrial-derived peptide investigated for its role in metabolic homeostasis, insulin sensitivity, fat metabolism and exercise capacity — a staple of longevity-clinic protocols.",
    contains:"20 mg MOTS-C per unit"},
-  {id:"glow", name:"GLOW 10/10/50mg", cat:"aesthetic", price:199, best:true, accent:"crimson",
+  {id:"glow", name:"GLOW 10/10/50mg", cat:"aesthetic", price:349, best:true, accent:"crimson",
    tag:"GHK-Cu + BPC-157 + TB-500",
    desc:"The aesthetic stack — collagen, skin regeneration and tissue recovery in one pre-filled pen.",
    research:"GLOW combines GHK-Cu (a copper peptide studied for collagen production and skin regeneration) with the regenerative peptides BPC-157 and TB-500. It is positioned as an aesthetic and anti-inflammation stack.",
    contains:"GHK-Cu + BPC-157 + TB-500 blend · 10/10/50 mg per unit"},
-  {id:"wolverine", name:"Wolverine 10/10mg", cat:"recovery", price:189, best:true, accent:"crimson",
+  {id:"wolverine", name:"Wolverine 10/10mg", cat:"recovery", price:349, best:true, accent:"crimson",
    tag:"BPC-157 + TB-500",
    desc:"The dual-peptide recovery stack — an athletic-patient favorite for tissue repair protocols.",
    research:"Wolverine pairs BPC-157 and TB-500, two peptides studied for tissue repair, angiogenesis and inflammation modulation. It is one of the most-requested recovery protocols among athletic patient populations.",
@@ -43,7 +43,7 @@ const PRODUCTS = [
 
 const IMG = "assets/img/";
 function productImg(p){ return IMG + "products/" + (p && p.id ? p.id : "semaglutide") + ".png"; }
-function fmt(n){ return "$" + n.toFixed(0); }
+function fmt(n){ return "$" + n.toFixed(2); }
 function catName(slug){ var c = CATEGORIES.find(function(x){return x.slug===slug;}); return c ? c.name : slug; }
 
 const ICON = {
@@ -129,15 +129,15 @@ function buildFooter(){
 
 function productCard(p){
   return ''
-  + '<a class="card pcard reveal" href="product.html?id=' + p.id + '">'
-  +   '<div class="pcard__media"><img src="' + productImg(p) + '" alt="' + p.name + ' peptide pen" loading="lazy">'
-  +     '<span class="pcard__tag">' + catName(p.cat) + '</span>'
-  +     (p.best ? '<span class="pcard__best">Best Seller</span>' : '') + '</div>'
-  +   '<div class="pcard__body"><h3>' + p.name + '</h3>'
-  +     '<p class="pcard__desc">' + p.desc + '</p>'
-  +     '<div class="pcard__foot"><span class="pcard__price">Wholesale &mdash; price on request</span>'
-  +       '<span class="pcard__cta">Request Pricing</span></div>'
-  +   '</div></a>';
+  + '<div class="card pcard reveal">'
+  +   '<a class="pcard__link" href="product.html?id=' + p.id + '">'
+  +     '<div class="pcard__media"><img src="' + productImg(p) + '" alt="' + p.name + ' peptide pen" loading="lazy"></div>'
+  +     '<div class="pcard__body"><h3>' + p.name + '</h3>'
+  +       '<span class="pcard__price">' + fmt(p.price) + '</span>'
+  +     '</div>'
+  +   '</a>'
+  +   '<a class="pcard__cta" href="contact.html">Buy Now</a>'
+  + '</div>';
 }
 function renderGrid(el, list){ el.innerHTML = list.map(productCard).join(""); revealInit(); }
 
@@ -171,7 +171,7 @@ function initProduct(){
   function set(sel, val){ var e = document.querySelector(sel); if(e) e.textContent = val; }
   set("[data-cat]", p.tag);
   set("[data-name]", p.name);
-  set("[data-price]", "Wholesale pricing on request");
+  set("[data-price]", fmt(p.price));
   set("[data-desc]", p.desc);
   set("[data-research]", p.research);
   set("[data-contains]", p.contains);
@@ -277,14 +277,17 @@ const REFILLABLE = [
 function setTxt(sel, val){ var e = document.querySelector(sel); if(e) e.textContent = val; }
 function refillImg(p){ return "assets/img/refillable/" + p.id + ".png"; }
 function refillCard(p){
-  return '<a class="card pcard reveal" href="refill-product.html?id=' + p.id + '">'
-    + '<div class="pcard__media" style="background:radial-gradient(circle at 50% 34%,#FFFFFF,#F0F0EF)">'
-    +   '<img src="' + refillImg(p) + '" alt="' + p.name + ' refillable pen" loading="lazy">'
-    +   '<span class="pcard__tag">Refillable</span></div>'
-    + '<div class="pcard__body"><h3>' + p.name + '</h3>'
-    +   '<p class="pcard__desc">' + p.tag + ' — reusable multi-dose device.</p>'
-    +   '<div class="pcard__foot"><span class="pcard__price">Wholesale &mdash; price on request</span>'
-    +   '<span class="pcard__cta">Request Pricing</span></div></div></a>';
+  var base = PRODUCTS.find(function(x){return x.id===p.id;});
+  var price = base ? base.price : 349;
+  return '<div class="card pcard reveal">'
+    + '<a class="pcard__link" href="refill-product.html?id=' + p.id + '">'
+    +   '<div class="pcard__media"><img src="' + refillImg(p) + '" alt="' + p.name + ' refillable pen" loading="lazy"></div>'
+    +   '<div class="pcard__body"><h3>' + p.name + '</h3>'
+    +     '<span class="pcard__price">' + fmt(price) + '</span>'
+    +   '</div>'
+    + '</a>'
+    + '<a class="pcard__cta" href="contact.html">Buy Now</a>'
+    + '</div>';
 }
 function initRefill(){
   var g = document.getElementById("refill-grid");
@@ -318,7 +321,7 @@ function initRefillProduct(){
   setTxt("[data-desc]", p.desc || (r.tag + " in a durable, reusable pen device."));
   setTxt("[data-research]", p.research || "");
   setTxt("[data-contains]", "Reusable multi-dose injector device — cartridge-compatible across the Peptiva range.");
-  setTxt("[data-crumb]", r.name);
+  setTxt("[data-price]", fmt(p.price ? p.price : 349));setTxt("[data-crumb]", r.name);
   document.querySelectorAll("[data-img]").forEach(function(i){ i.src = refillImg(r); });
   var rel = document.getElementById("refill-related");
   if(rel){
