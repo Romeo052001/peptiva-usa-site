@@ -95,7 +95,7 @@ function buildFooter(){
   +   '<div class="footer__top">'
   +     '<div class="footer__brand">' + LOGO_FOOTER
   +       '<p>Pharmaceutical-grade, pre-filled peptide pens for licensed clinical practices and research. Standardized formats, COA on every batch.</p>'
-  +       '<div class="footer__badges"><span>cGMP Manufactured</span><span>3rd-Party Tested</span><span>COA Per Batch</span></div>'
+  +       '<div class="footer__badges"><span>cGMP Manufactured</span><span>3rd-Party Tested</span><span>COA Per Batch</span><span>FDA-Registered Facility</span><span>Made in USA</span></div>'
   +       '<div class="footer__socials">'
   +         '<a href="#" aria-label="Instagram">' + ICON.ig + '</a>'
   +         '<a href="#" aria-label="LinkedIn">' + ICON.li + '</a>'
