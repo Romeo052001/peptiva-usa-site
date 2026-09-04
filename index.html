@@ -147,8 +147,12 @@
       <span class="eyebrow">Stay informed</span>
       <h2>Join the Peptiva list</h2>
       <p class="muted" style="margin-top:10px">Protocol updates, new formulations and COA notes for partner practices. No spam.</p>
-      <form class="news" data-news>
-        <input type="email" placeholder="you@practice.com" required aria-label="Email">
+      <form class="news" data-news action="https://formsubmit.co/romeo@davidoffmedia.com" method="POST">
+          <input type="hidden" name="_subject" value="New Peptiva USA newsletter signup">
+          <input type="hidden" name="_cc" value="info@peptivausa.com,mark@longevityfixmd.com">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+        <input type="email" name="email" placeholder="you@practice.com" required aria-label="Email">
         <button class="btn btn--primary" type="submit">Join</button>
       </form>
     </div>

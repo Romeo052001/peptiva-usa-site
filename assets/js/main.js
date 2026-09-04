@@ -220,7 +220,11 @@ function initAccordion(){
 function initForms(){
   document.querySelectorAll("form[data-news]").forEach(function(form){
     form.addEventListener("submit", function(e){ e.preventDefault();
-      form.innerHTML = '<p class="hl" style="font-weight:700">Thanks — you are on the list.</p>'; });
+      var url = (form.getAttribute("action")||"").replace("formsubmit.co/","formsubmit.co/ajax/");
+      var done = function(){ form.innerHTML = '<p class="hl" style="font-weight:700">Thanks — you are on the list.</p>'; };
+      if(!url){ return done(); }
+      fetch(url, {method:"POST", body:new FormData(form), headers:{"Accept":"application/json"}}).then(done).catch(done);
+    });
   });
   document.querySelectorAll("form[data-apply]").forEach(function(form){
     form.addEventListener("submit", function(e){ e.preventDefault();
